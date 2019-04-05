@@ -249,9 +249,7 @@ public class BST<T extends Comparable<T>> {
 
 
 
-
 	/**
-	 * _Part 2: Implement this method._
 	 *
 	 * Find the rank (in an in-order traversal) of the specified
 	 * data. The rank of the minimum value key in the BST is 1. If the key
@@ -276,10 +274,12 @@ public class BST<T extends Comparable<T>> {
 		Node<T> x = minimum();
 		Node<T> key = find(data);
 		int count = 1;
-		while(x != null){
-			if(x.data.compareTo(key.data) == 0){
-				return count;
-			}
+
+		if(find(data) == null){
+			return -1;
+		}
+
+		while(x.data.compareTo(key.data) != 0){
 			count += 1;
 			x = successor(x);
 		}
@@ -288,7 +288,6 @@ public class BST<T extends Comparable<T>> {
 
 
 	/**
-	 * _Part 3: Implement this method._
 	 *
 	 * toString() is a method defined by Java's Object class
 	 * that can be used to provide a String representation for your
@@ -319,35 +318,31 @@ public class BST<T extends Comparable<T>> {
 	 *
 	 */
 	public String toString() {
-		// TODO: implement this
-		return null;
+		return print(root);
 	}
 
-	/**
-	 * _Part 4: Implement this method._
-	 *
-	 * Returns an iterator that performs an in-order walk
-	 * over the tree.  Additionally, you should make the BST
-	 * Iterable so that you can walk the tree's contents
-	 * using Java's foreach style loop.
-	 *
-	 * You will need to define a class implementing the Iterator<T>
-	 * interface to do the heavy lifting here.
-	 */
-	public Iterator<T> iterator() {
-		// TODO: implement this
-		return null;
+	public String print(Node<T> n){
+		if(n==null){
+			return "()";
+		}
+		return "(" + n.data + " " + print(n.left) + print(n.right) + ")";
 	}
+
 
 	// testing purposes
 	public static void main(String [] args ){
 		BST tree = new BST();
 		tree.add(10);
-		tree.add(12);
-		tree.add(13);
-		tree.add(14);
-		tree.add(15);
-		System.out.println(tree.rank(15));
+		tree.add(5);
+		tree.add(11);
+//		tree.add(12);
+//		tree.add(11);
+//		tree.add(13);
+//		tree.add(14);
+//		tree.add(15);
+		System.out.println(tree.rank(11));
+		System.out.println(tree.toString());
 
 	}
+
 }
