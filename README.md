@@ -1,2 +1,3 @@
 # Binary-Search-Tree
-(DATA STRUCTURES) Methods of binary search tree including minimum, maximum, add, remove, and finding the successor of a binary search tree.
+School project for data structures. 
+BST includes methods of binary search tree including minimum, maximum, add, remove, and finding the successor of a binary search tree.
